@@ -5,11 +5,13 @@
  */
 package ec.edu.ups.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ariel
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     
     private int id;
     private String nombre;
@@ -107,8 +109,5 @@ public abstract class Persona {
     public String toString() {
         return nombre + " " + apellido;
     }
-    
-    
-    
     
 }

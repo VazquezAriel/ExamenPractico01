@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author ariel
  */
-public class ControladorGenerico<T> {
+public abstract class ControladorGenerico<T> {
     
     private List<T> listado;
 
@@ -62,7 +62,7 @@ public class ControladorGenerico<T> {
 
     public int generarId() {
         if (listado.size() > 0) {
-            return listado.indexOf(listado.get(listado.size() - 1)) + 1;
+            return listado.indexOf(listado.get(listado.size() - 1)) + 2;
         }
         return 1;
     }
@@ -74,5 +74,6 @@ public class ControladorGenerico<T> {
     public void setListado(List<T> listado) {
         this.listado = listado;
     }
+    
     
 }
