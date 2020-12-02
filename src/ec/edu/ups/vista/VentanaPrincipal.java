@@ -46,6 +46,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         try {
             controladorRector.cargarDatos(rutaRectores);
+            controladorDocente.cargarDatos(rutaDocentes);
+            controladorCurso.cargarDatos(rutaCursos);
+            controladorAlumno.cargarDatos(rutaAlumnos);
         }catch (IOException | ClassNotFoundException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -188,6 +191,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             controladorRector.guardarDatos(rutaRectores);
+            controladorDocente.guardarDatos(rutaDocentes);
+            controladorCurso.guardarDatos(rutaCursos);
+            controladorAlumno.guardarDatos(rutaAlumnos);
         } catch (IOException ex) {
            JOptionPane.showMessageDialog(this, ex.getMessage());
         }

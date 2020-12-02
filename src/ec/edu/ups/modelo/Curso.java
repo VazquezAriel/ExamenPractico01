@@ -6,8 +6,8 @@
 package ec.edu.ups.modelo;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,23 +17,82 @@ public class Curso implements Serializable{
     
     private int id;
     private String nombre;
-    private Set<Actividad> actividades;
-    private Set alumnos;
+    private Docente docente;
+    private List<Actividad> actividades;
+    private List<Alumno> alumnos;
 
     public Curso() {
-        actividades = new HashSet<Actividad>();
-        alumnos = new HashSet<Alumno>();
+        actividades = new ArrayList<>();
+        alumnos = new ArrayList<>();
+    }
+
+    public Curso(int id) {
+        this.id = id;
+        actividades = new ArrayList<>();
+        alumnos = new ArrayList<>();
     }
     
-    
-
     public Curso(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        actividades = new HashSet<Actividad>();
-        alumnos = new HashSet<Alumno>();
+        actividades = new ArrayList<>();
+        alumnos = new ArrayList<>();
     }
 
+    public Curso(int id, String nombre, Docente docente) {
+        this.id = id;
+        this.nombre = nombre;
+        this.docente = docente;
+        alumnos = new ArrayList<>();
+        actividades = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
+    }
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+    public Docente getDocente() {
+        return docente;
+    }
+    
+    public void agregarActividad(Actividad actividad) {
+        actividades.add(actividad);
+    }
+    
+    public void agregarAlumno (Alumno alumno) {
+        alumnos.add(alumno);
+    }
+    
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
     @Override
     public int hashCode() {
         int hash = 5;

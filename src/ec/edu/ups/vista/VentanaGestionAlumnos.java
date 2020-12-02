@@ -5,8 +5,8 @@
  */
 package ec.edu.ups.vista;
 
-import ec.edu.controlador.ControladorDocente;
-import ec.edu.ups.modelo.Docente;
+import ec.edu.controlador.ControladorAlumno;
+import ec.edu.ups.modelo.Alumno;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,22 +14,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ariel
  */
-public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
+public class VentanaGestionAlumnos extends javax.swing.JInternalFrame {
 
-    private ControladorDocente controladorDocente;
+    private ControladorAlumno controladorAlumno;
     
-    public VentanaGestionDocentes(ControladorDocente controladorDocente) {
+    public VentanaGestionAlumnos(ControladorAlumno controladorAlumno) {
         initComponents();
-        
-        this.controladorDocente = controladorDocente;
+        this.controladorAlumno = controladorAlumno;
     }
-    
-    public void cargarDatosTabla(List<Docente> docentes) {
+
+    public void cargarDatosTabla(List<Alumno> alumnos) {
         DefaultTableModel modelo = (DefaultTableModel) jTableDocentes.getModel();
         modelo.setRowCount(0);
         
-        for (Docente d : docentes) {
-            Object[] rowData = {d.getId(), d.getNombre(), d.getApellido(), d.getCedula(), d.getEdad(), d.getGenero()};
+        for (Alumno a : alumnos) {
+            Object[] rowData = {a.getId(), a.getNombre(), a.getApellido(), a.getCedula(), a.getEdad(), a.getGenero()};
             modelo.addRow(rowData);
         }
         jTableDocentes.setModel(modelo);
@@ -39,10 +38,8 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
         jTextFieldApellido.setText("");
         jTextFieldBusqueda.setText("");
         jTextFieldCedula.setText("");
-        jTextFieldContraseña.setText("");
         jTextFieldEdad.setText("");
         jTextFieldNombre.setText("");
-        jTextFieldUsuario.setText("");
         
     }
     
@@ -56,15 +53,11 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
         jLabelApellido1 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
-        jTextFieldUsuario = new javax.swing.JTextField();
         jLabelNombre1 = new javax.swing.JLabel();
         jTextFieldCedula = new javax.swing.JTextField();
         jLabelNombre2 = new javax.swing.JLabel();
         jComboBoxGenero = new javax.swing.JComboBox<>();
-        jLabelNombre3 = new javax.swing.JLabel();
         jTextFieldEdad = new javax.swing.JTextField();
-        jLabelNombre4 = new javax.swing.JLabel();
-        jTextFieldContraseña = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDocentes = new javax.swing.JTable();
         jTextFieldBusqueda = new javax.swing.JTextField();
@@ -90,8 +83,6 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
 
         jTextFieldApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jTextFieldUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
         jLabelNombre1.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabelNombre1.setText("Cedula:");
 
@@ -108,15 +99,7 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabelNombre3.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jLabelNombre3.setText("Usuario:");
-
         jTextFieldEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLabelNombre4.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        jLabelNombre4.setText("Contraseña:");
-
-        jTextFieldContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jTableDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,13 +125,6 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(jTableDocentes);
-        if (jTableDocentes.getColumnModel().getColumnCount() > 0) {
-            jTableDocentes.getColumnModel().getColumn(0).setResizable(false);
-            jTableDocentes.getColumnModel().getColumn(0).setPreferredWidth(15);
-            jTableDocentes.getColumnModel().getColumn(1).setResizable(false);
-            jTableDocentes.getColumnModel().getColumn(2).setResizable(false);
-            jTableDocentes.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         jTextFieldBusqueda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -190,15 +166,9 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
                             .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNombre3)
-                            .addComponent(jLabelNombre4)
-                            .addComponent(jLabelApellido))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelApellido)
+                        .addGap(38, 38, 38)
+                        .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,29 +200,18 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabelApellido)
                                 .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelNombre3)
-                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelNombre4)
-                            .addComponent(jTextFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelNombre1)
-                            .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelApellido1)
-                            .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelNombre2))))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre1)
+                    .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelApellido1)
+                    .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNombre2))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,7 +220,7 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
                     .addComponent(jButtonLimpiar)
                     .addComponent(jButtonGuardar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -283,14 +242,14 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxGeneroActionPerformed
 
-    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButtonLimpiarActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -304,17 +263,13 @@ public class VentanaGestionDocentes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelNombre2;
-    private javax.swing.JLabel jLabelNombre3;
-    private javax.swing.JLabel jLabelNombre4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDocentes;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldBusqueda;
     private javax.swing.JTextField jTextFieldCedula;
-    private javax.swing.JTextField jTextFieldContraseña;
     private javax.swing.JTextField jTextFieldEdad;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }

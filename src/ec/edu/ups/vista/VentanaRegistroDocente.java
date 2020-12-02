@@ -23,6 +23,15 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
         this.controladorDocente  = controladorDocente;
     }
     
+    public void limpiar() {
+        jTextFieldNombre.setText("");
+        jTextFieldApellido.setText("");
+        jTextFieldCedula.setText("");
+        jTextFieldEdad.setText("");
+        jTextFieldUsuario.setText("");
+        jTextFieldContraseña.setText("");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,7 +52,7 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
         jTextFieldCedula = new javax.swing.JTextField();
         jButtonGuardar = new javax.swing.JButton();
         jTextFieldNombre = new javax.swing.JTextField();
-        jButtonCancelar = new javax.swing.JButton();
+        jButtonLimpiar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -92,11 +101,11 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
 
         jTextFieldNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jButtonCancelar.setBackground(new java.awt.Color(255, 51, 0));
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLimpiar.setBackground(new java.awt.Color(255, 51, 0));
+        jButtonLimpiar.setText("Limpiar");
+        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                jButtonLimpiarActionPerformed(evt);
             }
         });
 
@@ -121,19 +130,13 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
                                         .addComponent(jLabelUsuario5)
                                         .addComponent(jLabelUsuario3)
                                         .addComponent(jLabelUsuario2))
+                                    .addGap(49, 49, 49)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addGap(49, 49, 49)
-                                            .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldEdad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(49, 49, 49)
-                                                .addComponent(jTextFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(49, 49, 49)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jSpinnerGenero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                            .addComponent(jTextFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jSpinnerGenero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelUsuario4)
@@ -142,7 +145,7 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
                                 .addComponent(jTextFieldApellido))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -181,7 +184,7 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardar)
-                    .addComponent(jButtonCancelar))
+                    .addComponent(jButtonLimpiar))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -215,6 +218,7 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
             if (edad.matches("^[0-9 ]+$")) {
                 if (controladorDocente.crear(new Docente(usuario, contraseña, controladorDocente.generarId(), nombre, apellido, Integer.valueOf(edad), genero, cedula))) {
                     JOptionPane.showMessageDialog(this, "Docente creado con exito");
+                    limpiar();
                 } else {
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error porfavor vuelva a intentarlo");
                 }
@@ -225,14 +229,15 @@ public class VentanaRegistroDocente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonLimpiar;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelUsuario1;
     private javax.swing.JLabel jLabelUsuario2;

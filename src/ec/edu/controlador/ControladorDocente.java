@@ -14,6 +14,10 @@ import ec.edu.ups.modelo.Docente;
 public class ControladorDocente extends ControladorGenerico<Docente>{
     
     private Docente docenteLogeado;
+
+    public Docente getDocenteLogeado() {
+        return docenteLogeado;
+    }
     
     public boolean validar(String usuario, String contraseña) {
         for (Docente docente : getListado()) {

@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.modelo;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
  *
  * @author ariel
  */
-public class Actividad {
+public class Actividad implements Serializable{
     
     private String nombre;
     private String descripcion;
@@ -21,6 +22,10 @@ public class Actividad {
 
     public Actividad() {
         app = new HashMap<String, String>();
+    }
+
+    public Actividad(String nombre) {
+        this.nombre = nombre;
     }
 
     public Actividad(String nombre, String descripcion) {
@@ -76,6 +81,10 @@ public class Actividad {
             return false;
         }
         return true;
+    }
+    
+    public void obtenerApps() {
+        
     }
 
     @Override

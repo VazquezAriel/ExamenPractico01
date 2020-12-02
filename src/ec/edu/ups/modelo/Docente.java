@@ -5,7 +5,9 @@
  */
 package ec.edu.ups.modelo;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -16,16 +18,18 @@ public class Docente extends Persona{
     
     private String usuario;
     private String contraseña;
-    private Set<Curso> cursos;
+    private List<Actividad> actividades;
+    
 
     public Docente() {
-        cursos = new HashSet<Curso>();
+        actividades = new ArrayList<>();
     }
 
     public Docente(String usuario, String contraseña, int id, String nombre, String apellido, int edad, String genero, String cedula) {
         super(id, nombre, apellido, edad, genero, cedula);
         this.usuario = usuario;
         this.contraseña = contraseña;
+        actividades = new ArrayList<>();
     }
 
     public String getUsuario() {
@@ -44,12 +48,37 @@ public class Docente extends Persona{
         this.contraseña = contraseña;
     }
 
-    public Set<Curso> getCursos() {
-        return cursos;
+    public List<Actividad> getActividades() {
+        return actividades;
     }
 
-    public void setCursos(Set<Curso> cursos) {
-        this.cursos = cursos;
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
+    }
+    
+    public void AgregarActividad(Actividad actividad) {
+        actividades.add(actividad);
+    }
+    
+    public Actividad buscarActividad(String nombre) {
+        for (Actividad actividad : actividades) {
+            if (actividad.getNombre().equals(nombre)) {
+                return actividad;
+            }
+        }
+        return null;
+    }
+    
+    public boolean actualizarActividad(Actividad a, String nombre, String descripsion) {
+        for (Actividad actividad : actividades) {
+            if (actividad.equals(a)) {
+                actividad.setNombre(nombre);
+                actividad.setDescripcion(descripsion);
+                actividades.set(actividades.indexOf(a), actividad);
+                return true;
+            }
+        }
+        return false;
     }
     
 }

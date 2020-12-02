@@ -167,12 +167,20 @@ public class VentanaLogeo extends javax.swing.JFrame {
         if (controladorRector.validar(jTextFieldUsuario.getText(), jPasswordFieldContraseña.getText())) {
             ventanaGeneral.getjMenuGestionActividades().setEnabled(false);
             ventanaGeneral.getjMenuGestionAlumnos().setEnabled(false);
+            ventanaGeneral.getjMenuGestionDocentes().setEnabled(true);
+            ventanaGeneral.getjMenuItemAdministrarCursos().setEnabled(true);
+            ventanaGeneral.getjMenuItemAgregarCurso().setEnabled(true);
+            ventanaGeneral.getjMenuItemMisCursos().setEnabled(false);
             ventanaGeneral.setVisible(true);
             this.setVisible(false);
 
         } else if (controladorDocente.validar(jTextFieldUsuario.getText(), jPasswordFieldContraseña.getText())) {
             ventanaGeneral.getjMenuGestionDocentes().setEnabled(false);
-            ventanaGeneral.getjMenuGestionClases().setEnabled(false);
+            ventanaGeneral.getjMenuItemAdministrarCursos().setEnabled(false);
+            ventanaGeneral.getjMenuItemAgregarCurso().setEnabled(false);
+            ventanaGeneral.getjMenuItemMisCursos().setEnabled(true);
+            ventanaGeneral.getjMenuGestionActividades().setEnabled(true);
+            ventanaGeneral.getjMenuGestionAlumnos().setEnabled(true);
             ventanaGeneral.setVisible(true);
             this.setVisible(false);
             
